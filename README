@@ -1,0 +1,27 @@
+Um simples plugin que bloqueia os inputs do tipo checkbox ao se atingir o limite de opções.
+
+Uso:
+	Ter os checkbox em um container
+	Invocar o plugin neste container, podendo especificar o limite pela chamada ou usando o atributo data-limit-checkbox no container.
+	O limite especificado pelo atributo data-limit-checkbox sobrepõe a opção indicada ao instanciar o plugin.
+
+Exemplo:
+	<div class="limitcheckbox" data-limit-checkbox="3">
+        <p><input type="checkbox" id="1" /><label for="1">Texto</label></p>
+        <p><input type="checkbox" id="2" /><label for="2">Texto</label></p>
+        <p><input type="checkbox" id="3" /><label for="3">Texto</label></p>
+        <p><input type="checkbox" id="4" /><label for="4">Texto</label></p>
+        <p><input type="checkbox" id="5" /><label for="5">Texto</label></p>
+	</div>
+	
+	<div class="limitcheckbox">
+        <p><input type="checkbox" id="01" /><label for="01">Outro texto</label></p>
+        <p><input type="checkbox" id="02" /><label for="02">Outro texto</label></p>
+        <p><input type="checkbox" id="03" /><label for="03">Outro texto</label></p>
+        <p><input type="checkbox" id="04" /><label for="04">Outro texto</label></p>
+        <p><input type="checkbox" id="05" /><label for="05">Outro texto</label></p>
+	</div>
+	
+	$(".limitcheckbox").limitcheckbox(2);
+	Ou
+	$(".limitcheckbox").limitcheckbox({limit:2});
