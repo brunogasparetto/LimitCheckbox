@@ -10,7 +10,7 @@ O desenvolvi, a princípio, para testar a criação de plugin utilizando a jQuery B
 * Invocar o plugin neste container, especificando o limite ao invocar o plugin ou usando o atributo data-limit-checkbox no container.
 * O limite especificado pelo atributo data-limit-checkbox sobrepõe a opção indicada ao instanciar o plugin.
 
-** Exemplos **
+## Exemplos ##
 
 ```html
 <div class="limitcheckbox">
