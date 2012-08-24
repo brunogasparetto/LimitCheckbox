@@ -1,37 +1,39 @@
-# IntroduÁ„o #
+# Introdu√ß√£o #
 
-JQuery.limitcheckbox È um plugin que limita a seleÁ„o de inputs do tipo checkbox.
+JQuery.limitcheckbox √© um plugin que limita a sele√ß√£o de inputs do tipo checkbox.
 
-O desenvolvi, a princÌpio, para testar a criaÁ„o de plugin utilizando a jQuery Boilerplate.
+O desenvolvi, a princ√≠pio, para testar a cria√ß√£o de plugin utilizando a jQuery Boilerplate.
 
 ## Como Usar ##
 
 * Ter os checkbox em um container (pode usar o body como tal).
 * Invocar o plugin neste container, especificando o limite ao invocar o plugin ou usando o atributo data-limit-checkbox no container.
-* O limite especificado pelo atributo data-limit-checkbox sobrepıe a opÁ„o indicada ao instanciar o plugin.
+* O limite especificado pelo atributo data-limit-checkbox sobrep√µe a op√ß√£o indicada ao instanciar o plugin.
 
 ## Exemplos ##
 
 ```html
-<div class="limitcheckbox">
-    <p><input type="checkbox" id="01" /><label for="01">Outro texto</label></p>
-    <p><input type="checkbox" id="02" /><label for="02">Outro texto</label></p>
-    <p><input type="checkbox" id="03" /><label for="03">Outro texto</label></p>
-    <p><input type="checkbox" id="04" /><label for="04">Outro texto</label></p>
-    <p><input type="checkbox" id="05" /><label for="05">Outro texto</label></p>
-</div>
+<fieldset class="limitcheckbox">
+    <legend>Escolha as op√ß√µes:</legend>
+    <p><input type="checkbox" id="01" /><label for="01">Texto 01</label></p>
+    <p><input type="checkbox" id="02" /><label for="02">Texto 02</label></p>
+    <p><input type="checkbox" id="03" /><label for="03">Texto 03</label></p>
+    <p><input type="checkbox" id="04" /><label for="04">Texto 04</label></p>
+    <p><input type="checkbox" id="05" /><label for="05">Texto 05</label></p>
+</fieldset>
 
-<div class="limitcheckbox" data-limit-checkbox="3">
-    <p><input type="checkbox" id="1" /><label for="1">Texto</label></p>
-    <p><input type="checkbox" id="2" /><label for="2">Texto</label></p>
-    <p><input type="checkbox" id="3" /><label for="3">Texto</label></p>
-    <p><input type="checkbox" id="4" /><label for="4">Texto</label></p>
-    <p><input type="checkbox" id="5" /><label for="5">Texto</label></p>
-</div>
+<fieldset class="limitcheckbox" data-limit-checkbox="3">
+    <legend>Escolha as op√ß√µes:</legend>
+    <p><input type="checkbox" id="11" /><label for="11">Texto 11</label></p>
+    <p><input type="checkbox" id="12" /><label for="12">Texto 12</label></p>
+    <p><input type="checkbox" id="13" /><label for="13">Texto 13</label></p>
+    <p><input type="checkbox" id="14" /><label for="14">Texto 14</label></p>
+    <p><input type="checkbox" id="15" /><label for="15">Texto 15</label></p>
+</fieldset>
 ```
 
 ```javascript
 $(".limitcheckbox").limitcheckbox(2);
 ```
 
-O primeiro bloco permitir· selecionar atÈ 2 checkbox, enquanto o segundo bloco permitir· a seleÁ„o de atÈ 3 checkbox
+O primeiro bloco permitir√° selecionar at√© 2 checkbox, enquanto o segundo bloco permitir√° a sele√ß√£o de at√© 3 checkbox
