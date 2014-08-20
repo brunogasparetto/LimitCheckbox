@@ -40,7 +40,18 @@
 <script type="text/javascript" src="jquery.limitcheckbox.js"></script>
 <script type="text/javascript">
     $(function() {
-        $(".limitcheckbox").limitcheckbox(2);
+        $(".limitcheckbox")
+            .limitcheckbox({
+                limit: 2,
+                
+                onBlock: function (event, limit) {
+                    console.log("Block", this, event, limit);
+                },
+                
+                onRelease: function (event, limit) {
+                    console.log("Release", this, event, limit);
+                }
+            });
     });
 </script>
 </body>
