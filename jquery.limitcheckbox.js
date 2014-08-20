@@ -30,9 +30,8 @@
             var limitCheckbox = this.element.data("limitCheckbox"),
                 self = this;
 
-            self.remaining = limitCheckbox !== undefined ?
-                            parseInt(limitCheckbox, 10) :
-                            self.options.limit;
+            self.options.limit = limitCheckbox ? parseInt(limitCheckbox, 10) : self.options.limit;
+            self.remaining = self.options.limit;
 
             self.element.on("change." + pluginName, "input[type=checkbox]", function (event) {
                 self.change(this, event);
