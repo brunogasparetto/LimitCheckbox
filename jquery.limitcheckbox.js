@@ -12,7 +12,9 @@
     // Create the defaults once
     var pluginName = 'limitcheckbox',
         defaults = {
-            limit: 5
+            limit: 5,
+            onBlock: null,
+            onRelease: null
         };
 
     // The actual plugin constructor
@@ -32,12 +34,12 @@
                             parseInt(limitCheckbox, 10) :
                             self.options.limit;
 
-            self.element.on("change." + pluginName, "input[type=checkbox]", function () {
-                self.change(this);
+            self.element.on("change." + pluginName, "input[type=checkbox]", function (event) {
+                self.change(this, event);
             });
         },
 
-        change: function (element) {
+        change: function (element, event) {
             var old = this.remaining;
 
             if (element.checked) {
@@ -48,8 +50,10 @@
 
             if (!old) {
                 this.open();
+                this.trigger("onRelease", element, event);
             } else if (!this.remaining) {
                 this.close();
+                this.trigger("onBlock", element, event);
             }
         },
 
@@ -59,6 +63,13 @@
 
         open: function () {
             this.checkboxes.attr("disabled", false);
+        },
+        
+        trigger: function (callback, element, event) {
+            if (!this.options[callback]) {
+                return;
+            }
+            this.options[callback].call(element, event, this.options.limit);
         }
     };
 
