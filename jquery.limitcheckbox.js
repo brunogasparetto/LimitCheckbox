@@ -1,11 +1,13 @@
-/*
+/*global jQuery */
+
+/*!
  *  Project: LimitCheckbox
- *  Description: Block the checkboxes when reach the limit
+ *  Description: JQuery Plugin: Block the checkboxes when reach the limit
  *  Author: Bruno Gasparetto <brunogasparetto@gmail.com>
  *  License: MIT
  */
-
-;(function ( $, undefined ) {
+(function ($) {
+    "use strict";
 
     // Create the defaults once
     var pluginName = 'limitcheckbox',
@@ -14,64 +16,61 @@
         };
 
     // The actual plugin constructor
-    function Plugin( element, options ) {
-        this.options = $.extend( {}, defaults, options);
+    function Plugin(element, options) {
+        this.options    = $.extend({}, defaults, options);
         this.element    = $(element);
         this.checkboxes = this.element.find("input[type=checkbox]");
-
         this.init();
     }
 
     Plugin.prototype = {
-
-        init: function() {
+        init: function () {
             var limitCheckbox = this.element.data("limitCheckbox"),
-                plugin = this;
+                self = this;
 
-            this.remaining = limitCheckbox !== undefined ?
-                parseInt(limitCheckbox, 10) :
-                this.options.limit;
+            self.remaining = limitCheckbox !== undefined ?
+                            parseInt(limitCheckbox, 10) :
+                            self.options.limit;
 
-            this.element.on("change."+pluginName, "input[type=checkbox]", function() {
-                    plugin.change(this)
-                }
-            );
+            self.element.on("change." + pluginName, "input[type=checkbox]", function () {
+                self.change(this);
+            });
         },
 
-        change: function(element) {
+        change: function (element) {
             var old = this.remaining;
 
-            if ( element.checked ) {
-                --this.remaining;
+            if (element.checked) {
+                this.remaining -= 1;
             } else {
-                ++this.remaining;
+                this.remaining += 1;
             }
 
-            if ( !old ) {
+            if (!old) {
                 this.open();
-            } else if ( !this.remaining ) {
+            } else if (!this.remaining) {
                 this.close();
             }
         },
 
-        close: function() {
+        close: function () {
             this.checkboxes.not(':checked').attr("disabled", true);
         },
 
-        open: function() {
+        open: function () {
             this.checkboxes.attr("disabled", false);
         }
     };
 
-    $.fn[pluginName] = function ( options ) {
-        if ( typeof options == "number" ) {
+    $.fn[pluginName] = function (options) {
+        if (typeof options === "number") {
             options = {
                 limit: options
             };
         }
         return this.each(function () {
             if (!$.data(this, 'plugin_' + pluginName)) {
-                $.data(this, 'plugin_' + pluginName, new Plugin( this, options ));
+                $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
             }
         });
     };
